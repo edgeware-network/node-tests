@@ -1,0 +1,10 @@
+pub const EDG: u128 = 1_000_000_000_000_000_000;
+pub const NB_TEST_ACCOUNTS: u32 = 260;
+pub const NB_COUNCILLOR_CANDIDATES: u32 = 30;
+pub const TEST_ACCOUNT_FUNDING: u128 = 100_000 * EDG;
+pub const EXISTENTIAL_DEPOSIT: u128 = 10_000_000_000_000;
+pub const WEIGHT_BOUND: u64 = 10_000_000_000;
+pub const LENGTH_BOUND: u32 = 100_000;
+pub const BLOCK_INCLUSION_LAG: u64 = 13;
+pub const NB_VOTERS: u32 = 30;
+pub const WASM_BINARY: Option<&[u8]> = Some(include_bytes!("../data/edgeware_runtime.compact.compressed.wasm"));

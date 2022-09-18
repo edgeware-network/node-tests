@@ -1,0 +1,24 @@
+[package]
+name = "testsuite"
+version = "0.1.0"
+authors = ["Parity Technologies <admin@parity.io>"]
+edition = "2021"
+publish = false
+
+license = "Apache-2.0 OR GPL-3.0"
+repository = "https://github.com/paritytech/subxt"
+documentation = "https://docs.rs/subxt"
+homepage = "https://www.parity.io/"
+description = "Subxt example usage"
+
+[dependencies]
+subxt = { version = "0.23.0", git = "https://github.com/paritytech/subxt" }
+tokio = { version = "1.8", features = ["rt-multi-thread", "macros", "time"] }
+serde = { version = "1.0.104", features = ["derive"] }
+serde_json = "1.0.48"
+sp-keyring = "6.0.0"
+futures = "0.3.13"
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive", "full", "bit-vec"] }
+hex = "0.4.3"
+tracing-subscriber = "0.3.11"
+rand = "0.8.5"
