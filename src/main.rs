@@ -86,9 +86,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("Balance transfer extrinsic submitted for test account {}: {}",i, hash);
     }
     // Nominate validators and set up a council
-    let sf = staking::nominate_all(&api, &acc_seed_accounts[..]);
-    let cf = council::populate_council(&api, &acc_seed_accounts[..]);
-    let (_,_) = tokio::join!(sf,cf);
+    staking::nominate_all(&api, &acc_seed_accounts[..]).await?;
+    council::populate_council(&api, &acc_seed_accounts[..]).await?;
     let referendum_storage_index = polkadot::storage().democracy().referendum_count();
     // Propose the upgrade through democracy
     democracy::propose_upgrade(&api, &acc_seed_accounts[..]).await?;
@@ -116,7 +115,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             let b= b0+b1+b2+b3;
             let b_ = *b0_+*b1_+*b2_+*b3_;
             if b!=b_ {
-                println!("Balances of account {} do not match difference in EDG: {} before/after {} / {}.",a, (b/EDG) as f64-(b_/EDG) as f64, b_,b);
+                println!("### Balances of account {} do not match ###",a);
+                println!("Difference in EDG: {} before/after {} / {}.",(b/EDG) as f64-(b_/EDG) as f64, b_,b);
+                println!("Difference in EDG: free {} before/after {} / {}.",(b0/EDG) as f64-(b0_/EDG) as f64, b0_,b0);
+                println!("Difference in EDG: reserved {} before/after {} / {}.",(b1/EDG) as f64-(b1_/EDG) as f64, b1_,b1);
+                println!("Difference in EDG: mix_frozen {} before/after {} / {}.",(b2/EDG) as f64-(b2_/EDG) as f64, b2_,b2);
+                println!("Difference in EDG: fee_frozen {} before/after {} / {}.",(b3/EDG) as f64-(b3_/EDG) as f64, b3_,b3);
             }
         }else{
             println!("Balances of account {} have been created: {} {} {} {}.",a, b0,b1,b2,b3);
