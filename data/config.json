@@ -1,4 +1,4 @@
 {
-    "Host": "ws://localhost:<port>",
+    "Host": "ws://localhost:9944",
     "SudoSeed": "<sudo seed>"
 }

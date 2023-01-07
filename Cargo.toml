@@ -12,11 +12,13 @@ homepage = "https://www.parity.io/"
 description = "Subxt example usage"
 
 [dependencies]
-subxt = { version = "0.23.0", git = "https://github.com/paritytech/subxt" }
+subxt = { version = "0.25.0", git = "https://github.com/paritytech/subxt" }
 tokio = { version = "1.8", features = ["rt-multi-thread", "macros", "time"] }
 serde = { version = "1.0.104", features = ["derive"] }
 serde_json = "1.0.48"
-sp-keyring = "6.0.0"
+sp-core = { version = "7.0.0", default-features = false }
+sp-keyring = "7.0.0"
+sp-runtime = "7.0.0"
 futures = "0.3.13"
 codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive", "full", "bit-vec"] }
 hex = "0.4.3"
